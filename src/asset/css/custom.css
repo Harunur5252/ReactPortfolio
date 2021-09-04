@@ -1,0 +1,375 @@
+
+.topFixedBanner{
+    background-image: url("../image/banner.jpg");
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.serviceLogoSize{
+    height: 100px;
+    width: 100px;
+    border: 1px solid #0073e6;
+    border-radius: 50%;
+}
+.projectImageSize{
+    width: 100%;
+}
+
+.topBannerOverlay{
+    position: absolute;
+    min-height: 500px;
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+}
+.topContent{
+   margin-top: 13rem;
+}
+
+.topTitle{
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 48px;
+}
+.topSubTitle{
+    font-family: 'Raleway',sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 22px;
+}
+.serviceCard{
+    margin: 5px 5px 5px 5px;
+    height: 22rem;
+    padding: 60px 30px 60px 30px;
+    box-shadow: 0 0 4px 0 rgba(0,115,230,0.2);
+}
+.serviceCard:hover{
+    box-shadow: 0 0 8px 0 rgba(0,115,230,0.2);
+}
+.serviceMainTitle{
+    color: #0073e6;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+}
+.serviceName{
+    margin-top: 1rem;
+    font-family: 'Raleway',sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+}
+.serviceDescription{
+    color: #2B2B2B;
+    margin-top: 1rem;
+    font-family: 'Raleway',sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+.navTitle{
+    text-decoration: none;
+    font-family: 'Montserrat',sans-serif;
+    color: #ffffff !important;
+    font-size: 24px;
+    font-weight: 700;
+}
+.navTitle:hover{
+    text-decoration: none;
+}
+.navTitle-Scroll:hover{
+    text-decoration: none;
+}
+.navTitle-Scroll{
+    text-decoration: none;
+    font-family: 'Montserrat',sans-serif;
+    color: #0073e6 !important;
+    font-size: 24px;
+    font-weight: 700;
+}
+.navBackgroundColor{
+    -webkit-transition: background-color 400ms linear;
+    -moz-transition: background-color 400ms linear;
+    -o-transition: background-color 400ms linear;
+    transition: background-color 400ms linear;
+    background-color:rgba(41, 36, 36, 0.897) !important;
+}
+.navBackgroundScrollColor{
+    -webkit-transition: background-color 400ms linear;
+    -moz-transition: background-color 400ms linear;
+    -o-transition: background-color 400ms linear;
+    transition: background-color 400ms linear;
+    background-color: #ffffff !important;
+    box-shadow: 0 0 6px 0 rgba(0,115,230,0.4);
+}
+
+.navItem{
+    text-decoration: none !important;
+    font-family: 'Montserrat',sans-serif;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 16px;
+}
+.navItemScroll{
+    text-decoration: none !important;
+    font-family: 'Montserrat',sans-serif;
+    color: #2b2b2b !important;
+    font-weight: 400;
+    font-size: 16px;
+}
+.description{
+    font-family: 'Raleway',sans-serif;
+    color: #2B2B2B;
+    font-size: 14px;
+    font-weight: 400;
+}
+.fixedSummaryBanner{
+    background-image: url("../image/banner.jpg");
+    min-height: 350px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.SummaryBannerOverlay{
+    position: absolute;
+    min-height: 350px;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+}
+.summarySection{
+    margin-top: 4rem;
+}
+.countNumber{
+    color: #ffffff !important;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 600;
+    font-size: 48px;
+}
+.countTitle{
+    color: #ffffff !important;
+    font-family: 'Raleway',sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+}
+.countSection{
+    margin-top: 17%;
+}
+.cardTitle{
+    color: #2B2B2B;
+    font-family: 'Raleway',sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+}
+.cardSubTitle{
+    color: #2B2B2B;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+.cardBulletIcon{
+    color: #0073e6;
+    font-size: 16px;
+}
+.cardWork{
+    margin-top: 14%;
+    padding: 10px 10px 10px 10px;
+    border-radius: 2px;
+}
+.projectCard{
+    border-radius: 2px;
+    border: none !important;
+    margin: 2px 2px 2px 2px;
+    box-shadow: 0 0 4px 0 rgba(0,115,230,0.2);
+}
+.projectCard:hover{
+    box-shadow: 0 0 8px 0 rgba(0,115,230,0.2);
+}
+.projectCardTitle{
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+}
+.projectCardDes{
+    font-family: 'Raleway',sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
+.courseImg{
+    width: 100%;
+}
+
+.courseTitle{
+    /* margin-top: 5%; */
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+}
+.courseDes{
+    font-family: 'Raleway',sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
+.courseDetails{
+    color: #0023e6;
+    text-decoration: none !important;
+    font-family: 'Raleway',sans-serif;
+    font-weight: 6400;
+    font-size: 18px;
+}
+.videoCard{
+    box-shadow: 0 0 4px 0 rgba(0,115,230,0.2);
+    padding: 3rem 3rem 3rem 3rem;
+    margin: 50px auto;
+    background-color: #ffffff;
+}
+.videoCardTitle{
+    color: #0073e6;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+}
+.videoCardDes{
+    color: #2B2B2B;
+    font-family: 'Raleway',sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
+.videoPlayBtn{
+    color: #0073e6;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 600;
+    font-size: 50px;
+    cursor: pointer;
+}
+.carouselImg{
+    margin: 0 auto;
+    border: 1px solid #0073e6;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+.carouselTitle{
+    color: #2B2B2B;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+}
+.carouselDes{
+    color: #2B2B2B;
+    font-family: 'Raleway',sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+.footerMarginTop{
+    margin-top: 5rem;
+    box-shadow: 0 0 4px 0 rgba(0,115,230,0.2);
+}
+.footerTitle{
+    color: #2B2B2B;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+}
+.socialLink{
+    text-decoration: none !important;
+    color: #0073e6;
+    font-family: 'Raleway',sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+.socialLink:hover{
+    text-decoration: none;
+    color: #2B2B2B;
+}
+.footerLink{
+    text-decoration: none !important;
+    color: #2B2B2B;
+    font-family: 'Raleway',sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+.footerLink:hover{
+    text-decoration: none;
+    color: #0073e6;
+}
+.copyrightSection{
+    text-decoration: none;
+    padding: 20px 20px 20px 20px;
+    background-color: #0073e6;
+
+}
+.copyrightLink{
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+.copyrightLink:hover{
+    text-decoration: none;
+    color: #2B2B2B;
+}
+
+.topFixedPage{
+    background-image: url("../image/banner.jpg");
+    min-height: 300px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.topPageOverlay{
+    position: absolute;
+    min-height: 300px;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+}
+.topPageContent{
+    margin-top: 9rem;
+}
+.topPageContentCourse{
+    margin-top: 6rem;
+}
+.courseFullTitle{
+    font-family: 'Raleway',sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 28px;
+}
+.courseSubTitle{
+    font-family: 'Raleway',sans-serif;
+    font-weight: 400;
+    color: #ffffff !important;
+    font-size: 16px;
+}
+.courseFullDes{
+    font-family: 'Raleway',sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 14px;
+}
+.topPageTitle{
+    font-family: 'Raleway',sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 28px;
+}
+.form-control:focus{
+    border-radius: 2px !important;
+    border-color: #0073E6 !important;
+    box-shadow: 0 0 4px 0 rgba(0,115,230,0.2) !important;
+}
+.linkStyle{
+    text-decoration: none !important;
+    color:#ffffff !important;
+}
+.linkStyle:hover{
+    text-decoration: none !important;
+    color:#ffffff !important;
+}
+
+

@@ -1,0 +1,133 @@
+
+@media (max-width: 575.98px) { 
+    .topTitle{
+        font-size: 28px;
+    }
+    .topSubTitle{
+        font-size: 16px;
+    }
+    .serviceMainTitle{
+        font-size: 22px;
+    }
+    .serviceName{
+        font-size: 18px;
+    }
+    .LoaderAnimation{
+        width: 100px;
+        height: 100px;
+    }
+    .navItem{
+        font-size: 14px;
+    }
+    .navItemScroll{
+        font-size: 14px;
+    }
+    .countNumber{
+        font-size: 32px;
+    }
+    .countTitle{
+        font-size: 16px;
+    }
+    .cardWork{
+        margin-top: 5%;
+        padding: 5px 5px 5px 5px;
+        border-radius: 2px;
+    }
+
+    .fixedSummaryBanner{
+        min-height: 510px;
+    }
+    .SummaryBannerOverlay{
+        min-height: 510px;
+    }
+    .topFixedPage{
+        min-height: 320px;
+    }
+    
+    .topPageOverlay{
+        min-height: 320px;
+    }
+    .videoCard{
+        padding: 2rem 2rem 2rem 2rem;
+        margin: 30px auto;
+    }
+   
+}
+
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .topTitle{
+        font-size: 35px;
+    }
+    .topSubTitle{
+        font-size: 18px;
+    }
+    .serviceMainTitle{
+        font-size: 24px;
+    }
+    .serviceName{
+        font-size: 18px;
+    }
+    .LoaderAnimation{
+        width: 120px;
+        height: 120px;
+    }
+    .navItem{
+        font-size: 16px;
+    }
+    .navItemScroll{
+        font-size: 16px;
+    }
+    .countNumber{
+        font-size: 32px;
+    }
+    .countTitle{
+        font-size: 16px;
+    }
+
+    .cardWork{
+        margin-top: 5%;
+        padding: 5px 5px 5px 5px;
+        border-radius: 2px;
+    }
+    .fixedSummaryBanner{
+        min-height: 510px;
+    }
+    .SummaryBannerOverlay{
+        min-height: 510px;
+    }
+    .topFixedPage{
+        min-height: 320px;
+    }
+    
+    .topPageOverlay{
+        min-height: 320px;
+    }
+    .videoCard{
+        padding: 2rem 2rem 2rem 2rem;
+        margin: 30px auto;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    .countNumber{
+        font-size: 36px;
+    }
+    .countTitle{
+        font-size: 18px;
+    }
+    .countSection{
+        margin-top: 36%;
+    }
+ }
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    
+ }
+
+
+@media (min-width: 1200px) { 
+    
+ }
