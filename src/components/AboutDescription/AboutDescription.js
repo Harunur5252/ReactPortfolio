@@ -3,14 +3,8 @@ import {Col, Container, Row} from "react-bootstrap";
 
 class AboutDescription extends Component {
 
-    
-
-
     render() {
-
-       
-
-              return (
+        return (
             <Fragment>
                 <Container className="mt-5">
                     <Row>
