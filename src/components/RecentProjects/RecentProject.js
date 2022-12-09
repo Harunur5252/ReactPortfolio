@@ -1,54 +1,50 @@
+import axios from 'axios';
 import React, {Component,Fragment} from 'react';
 import {Col, Container, Row,Card,Button} from "react-bootstrap";
 import {Link } from 'react-router-dom';
 
 class RecentProject extends Component {
-
+    state = {
+        loading :true,
+      }
+    
+      componentDidMount(){
+        this.fetchRecentPostData()
+      }
+       fetchRecentPostData = async () => {
+        try {
+           const res = await axios.get('http://localhost:1337/api/recent-project?populate=*')
+           const data = res.data?.data?.attributes
+           this.setState({
+              projects :data?.projects,
+              loading : false
+           })
+        } catch (error) {
+          console.log(error.response)
+        }
+       }
     render() {
         return (
             <Fragment>
                <Container className="text-center">
                    <h1 className="serviceMainTitle">RECENT PROJECTS</h1>
                    <Row>
-                       <Col lg={4} md={6} sm={12} className="p-2">
-                            <Card className="projectCard">
-                                <Card.Img variant="top" src="https://pmcaonline.org/wp-content/uploads/2020/07/react-js-1-1024x551.png" className="projectImageSize"/>
-                                <Card.Body>
-                                    <Card.Title className="projectCardTitle">React</Card.Title>
-                                    <Card.Text className="projectCardDes">
-                                        <p className="text-justify">The overall skills gained from this project based courses will prepare you for any type of project development. In this course you will be taught how to write a complete project with React JS including User Panel + Admin Panel. Source code will also be provided with each class of the course, so you can easily practice manually. This project uses React JS with PHP for the server site and MySQL for the database.</p>
-                                    </Card.Text>
-                                    <Button variant="primary"><Link className="linkStyle" to={"/projectDetails/1/React"}>Details</Link></Button>
-                                </Card.Body>
-                            </Card>
-                       </Col>
-
-                       <Col lg={4} md={6} sm={12} className="p-2">
-                            <Card className="projectCard">
-                                <Card.Img variant="top" src="https://pmcaonline.org/wp-content/uploads/2020/07/react-js-1-1024x551.png" className="projectImageSize"/>
-                                <Card.Body>
-                                    <Card.Title className="projectCardTitle">React</Card.Title>
-                                    <Card.Text className="projectCardDes">
-                                        <p className="text-justify">The overall skills gained from this project based courses will prepare you for any type of project development. In this course you will be taught how to write a complete project with React JS including User Panel + Admin Panel. Source code will also be provided with each class of the course, so you can easily practice manually. This project uses React JS with PHP for the server site and MySQL for the database.</p>
-                                    </Card.Text>
-                                    <Button variant="primary"><Link className="linkStyle" to={"/projectDetails/1/React"}>Details</Link></Button>
-                                </Card.Body>
-                            </Card>
-                       </Col>
-
-                       <Col lg={4} md={6} sm={12} className="p-2">
-                            <Card className="projectCard">
-                                <Card.Img variant="top" src="https://pmcaonline.org/wp-content/uploads/2020/07/react-js-1-1024x551.png" className="projectImageSize"/>
-                                <Card.Body>
-                                    <Card.Title className="projectCardTitle">React</Card.Title>
-                                    <Card.Text className="projectCardDes">
-                                        <p className="text-justify">The overall skills gained from this project based courses will prepare you for any type of project development. In this course you will be taught how to write a complete project with React JS including User Panel + Admin Panel. Source code will also be provided with each class of the course, so you can easily practice manually. This project uses React JS with PHP for the server site and MySQL for the database.</p>
-                                    </Card.Text>
-                                    <Button variant="primary"><Link className="linkStyle" to={"/projectDetails/1/React"}>Details</Link></Button>
-                                </Card.Body>
-                            </Card>
-                       </Col>
-                    
+                    {this.state?.projects?.map(project => {
+                        return(
+                            <Col lg={4} md={6} sm={12} className="p-2">
+                                <Card className="projectCard">
+                                    <Card.Img variant="top" src={project?.image} className="projectImageSize"/>
+                                    <Card.Body>
+                                        <Card.Title className="projectCardTitle">{project?.name}</Card.Title>
+                                        <Card.Text className="projectCardDes">
+                                            <p className="text-justify">{project?.des}</p>
+                                        </Card.Text>
+                                        <Button variant="primary"><Link className="linkStyle" to={`/projectdetails/${project?.id}/${project?.name}`}>Details</Link></Button>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        )
+                    })}
                    </Row>
                </Container>
             </Fragment>

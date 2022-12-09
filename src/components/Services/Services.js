@@ -1,45 +1,67 @@
 import React, {Component, Fragment} from 'react';
 import {Container,Row,Col} from "react-bootstrap";
-import graphicsLogo from '../../asset/image/graphics.svg'
-import webLogo from '../../asset/image/web.svg'
-import mobileLogo from '../../asset/image/mobile.svg'
+import axios from 'axios';
+import Loading from '../Loading/Loading';
 
 class Services extends Component {
-
+    state = {
+        loading :true,
+      }
+    
+      componentDidMount(){
+        this.fetchServiceData()
+      }
+       fetchServiceData = async () => {
+        try {
+           const res = await axios.get('http://localhost:1337/api/service?populate=*')
+           console.log(res.data)
+           const data = res.data?.data?.attributes?.services
+           this.setState({
+             services : data,
+             loading:false
+           })
+        } catch (error) {
+          console.log(error.response)
+        }
+       }
 
     render() {
+        if(this.state.loading){
+            return (
+             <Fragment>
+             <Container fluid className="p-0">
+                 <Container className="topContent text-center">
+                     <Row>
+                       <Col>
+                           <Loading />
+                       </Col>
+                     </Row>
+                 </Container>
+             </Container>
+           </Fragment>
+            )
+        }else {
             return (
                 <Fragment>
                     <Container className="text-center">
                         <h1 className="serviceMainTitle">MY SERVICE</h1>
                         <Row>
-                            <Col lg={4} md={6} sm={12}>
-                                <div className="serviceCard text-center">
-                                    <img src={mobileLogo} className="serviceLogoSize"/>
-                                    <h2 className="serviceName">Mobile Developments</h2>
-                                    <p className="serviceDescription">I build native and cross platfrom mobile app for your business and instiution as per as your requirement..</p>
-                                </div>
-                            </Col>
-
-                            <Col lg={4} md={6} sm={12}>
-                                <div className="serviceCard text-center">
-                                    <img src={webLogo} className="serviceLogoSize"/>
-                                    <h2 className="serviceName">Web Developments</h2>
-                                    <p className="serviceDescription">I build web Application for your business and institution as per as your requirement.</p>
-                                </div>
-                            </Col>
-
-                            <Col lg={4} md={6} sm={12}>
-                                <div className="serviceCard text-center">
-                                    <img src={graphicsLogo} className="serviceLogoSize"/>
-                                    <h2 className="serviceName">Graphics Design</h2>
-                                    <p className="serviceDescription">I can make Graphics Design for your business and institution as per as your requirement.</p>
-                                </div>
-                            </Col>
+                            {this.state?.services?.map(service => {
+                                return (
+                                    <Col lg={4} md={6} sm={12}>
+                                        <div className="serviceCard text-center">
+                                            <img src={service.link} className="serviceLogoSize" alt='serviceImg'/>
+                                            <h2 className="serviceName">{service.title}</h2>
+                                            <p className="serviceDescription">{service.des}</p>
+                                        </div>
+                                    </Col>
+                                )
+                            })}
                         </Row>
                     </Container>
                 </Fragment>
             );
+        }
           }
         }
 

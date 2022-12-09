@@ -52,7 +52,7 @@ class ClientReview extends Component {
                             <div>
                                 <Row className="text-center justify-content-center">
                                     <Col lg={6} md={6} sm={12}>
-                                    <img className="carouselImg" src="https://www.iknowhair.com/wp-content/uploads/Medium-Hairstyles-For-Men-004.jpg"/>
+                                    <img className="carouselImg" src="https://www.iknowhair.com/wp-content/uploads/Medium-Hairstyles-For-Men-004.jpg" alt='review'/>
                                     <h2 className="carouselTitle">Web Development</h2>
                                     <p className="carouselDes">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
                                     </Col>

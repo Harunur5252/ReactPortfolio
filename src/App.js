@@ -1,13 +1,15 @@
-import React from 'react';
-import {HashRouter} from "react-router-dom";
+import React, { Component } from 'react';
+import {BrowserRouter} from "react-router-dom";
 import AppRoute from './router/AppRoute';
 
-function App() {
-  return (
-    <HashRouter>
-          <AppRoute/>
-    </HashRouter>
-  );
+class App extends Component {
+  render () {
+      return (
+        <BrowserRouter>
+            <AppRoute/>
+        </BrowserRouter>
+      );
+  }
 }
 
 export default App;

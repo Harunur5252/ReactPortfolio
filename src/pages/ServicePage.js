@@ -11,7 +11,6 @@ class ServicePage extends Component {
         window.scroll(0,0);
      }
 
-     
     render() {
         return (
             <Fragment>

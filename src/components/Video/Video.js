@@ -11,11 +11,7 @@ class Video extends Component {
         this.state={
             show:false,
         }
-        
     }
-
-   
-
 
      modalClose = () => {
         this.setState({show:false})

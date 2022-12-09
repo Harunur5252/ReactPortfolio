@@ -6,11 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { Link } from 'react-router-dom';
 
 class Footer extends Component {
-
-  
     render() {
-
-        
             return (
                 <Fragment>
                     <Container fluid={true} className="text-center p-4">
@@ -52,7 +48,6 @@ class Footer extends Component {
                     </Container>
                 </Fragment>
             );
-
         }
         
 }
