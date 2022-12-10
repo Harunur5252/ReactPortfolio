@@ -3,7 +3,28 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import {Col, Container, Row} from "react-bootstrap";
+import axios from 'axios';
+import Loading from '../Loading/Loading';
 class ClientReview extends Component {
+    state = {
+        loading :true,
+      }
+    
+      componentDidMount(){
+        this.fetchTopBannerData()
+      }
+       fetchTopBannerData = async () => {
+        try {
+           const res = await axios.get('http://localhost:1337/api/review?populate=*')
+           const data = res.data?.data?.attributes
+           this.setState({
+              reviews :data?.reviews ,
+              loading : false
+           })
+        } catch (error) {
+          console.log(error.response)
+        }
+       }
     render() {
 
             let settings = {
@@ -43,76 +64,44 @@ class ClientReview extends Component {
                     }
                 ]
             };
-    
-            return (
-                <Fragment>
-                   <Container className="text-center">
-                       <h1 className="serviceMainTitle">CLIENT SAYS</h1>
-                       <Slider {...settings}>
-                            <div>
-                                <Row className="text-center justify-content-center">
-                                    <Col lg={6} md={6} sm={12}>
-                                    <img className="carouselImg" src="https://www.iknowhair.com/wp-content/uploads/Medium-Hairstyles-For-Men-004.jpg" alt='review'/>
-                                    <h2 className="carouselTitle">Web Development</h2>
-                                    <p className="carouselDes">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
-                                    </Col>
-                                </Row>
-                            </div>
-
-                            <div>
-                                <Row className="text-center justify-content-center">
-                                    <Col lg={6} md={6} sm={12}>
-                                    <img className="carouselImg" src="https://www.iknowhair.com/wp-content/uploads/Medium-Hairstyles-For-Men-004.jpg"/>
-                                    <h2 className="carouselTitle">Web Development</h2>
-                                    <p className="carouselDes">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
-                                    </Col>
-                                </Row>
-                            </div>
-
-                            <div>
-                                <Row className="text-center justify-content-center">
-                                    <Col lg={6} md={6} sm={12}>
-                                    <img className="carouselImg" src="https://www.iknowhair.com/wp-content/uploads/Medium-Hairstyles-For-Men-004.jpg"/>
-                                    <h2 className="carouselTitle">Web Development</h2>
-                                    <p className="carouselDes">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
-                                    </Col>
-                                </Row>
-                            </div>
-
-                            <div>
-                                <Row className="text-center justify-content-center">
-                                    <Col lg={6} md={6} sm={12}>
-                                    <img className="carouselImg" src="https://www.iknowhair.com/wp-content/uploads/Medium-Hairstyles-For-Men-004.jpg"/>
-                                    <h2 className="carouselTitle">Web Development</h2>
-                                    <p className="carouselDes">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
-                                    </Col>
-                                </Row>
-                            </div>
-
-                            <div>
-                                <Row className="text-center justify-content-center">
-                                    <Col lg={6} md={6} sm={12}>
-                                    <img className="carouselImg" src="https://www.iknowhair.com/wp-content/uploads/Medium-Hairstyles-For-Men-004.jpg"/>
-                                    <h2 className="carouselTitle">Web Development</h2>
-                                    <p className="carouselDes">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
-                                    </Col>
-                                </Row>
-                            </div>
-
-                            <div>
-                                <Row className="text-center justify-content-center">
-                                    <Col lg={6} md={6} sm={12}>
-                                    <img className="carouselImg" src="https://www.iknowhair.com/wp-content/uploads/Medium-Hairstyles-For-Men-004.jpg"/>
-                                    <h2 className="carouselTitle">Web Development</h2>
-                                    <p className="carouselDes">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
-                                    </Col>
-                                </Row>
-                            </div>
-                       </Slider>
-                   </Container>
-                </Fragment>
-            );
-
+            if(this.state.loading){
+                return (
+                 <Fragment>
+                 <Container fluid className="p-0">
+                     <Container className="topContent text-center">
+                         <Row>
+                           <Col>
+                               <Loading />
+                           </Col>
+                         </Row>
+                     </Container>
+                 </Container>
+               </Fragment>
+                )
+            }else{
+                return (
+                    <Fragment>
+                       <Container className="text-center">
+                           <h1 className="serviceMainTitle">CLIENT SAYS</h1>
+                           <Slider {...settings}>
+                            {this.state?.reviews?.map(review => {
+                                return (
+                                    <div key={review?.id}>
+                                        <Row className="text-center justify-content-center">
+                                            <Col lg={6} md={6} sm={12}>
+                                            <img className="carouselImg" src={review?.image} alt='reviewImg'/>
+                                            <h2 className="carouselTitle">{review?.categoryName}</h2>
+                                            <p className="carouselDes">{review?.short_des}</p>
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                )
+                            })}
+                           </Slider>
+                       </Container>
+                    </Fragment>
+                );
+            }
         }
     }
 

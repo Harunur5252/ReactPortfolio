@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Col, Container, Row,Modal,Button, Card} from "react-bootstrap";
 import 'video-react/dist/video-react.css';
 import { Player, BigPlayButton,ControlBar, ReplayControl,ForwardControl } from 'video-react';
 import Image from '../../asset/image/banner-939233_1920.jpg'
@@ -11,9 +11,16 @@ class CourseDetails extends Component {
     constructor(props){
         super(props)
         this.state = {
+            show:false,
             loading : true
         }
       }
+      modalClose = () => {
+        this.setState({show:false})
+    }
+    modalShow = () =>{
+        this.setState({show:true})
+    }
        id = +this.props.id
 
       componentDidMount(){
@@ -81,7 +88,7 @@ class CourseDetails extends Component {
                             <Col sm={12} md={6} lg={6} className="text-justify">
                               <h3 className="courseTitle">Skill You Got</h3>
                               <ReactMarkdown>{singleCourse?.broad_des}</ReactMarkdown>
-                              <Button target="_blank" variant="primary">Buy Now</Button>
+                              <Button onClick={this.modalShow} target="_blank" variant="primary">Buy Now</Button>
                             </Col>
     
                             <Col sm={12} md={6} lg={6}  className="mt-4">
@@ -96,6 +103,29 @@ class CourseDetails extends Component {
                                 </Player>
                             </Col>
                         </Row>
+
+
+
+                        <Modal size="md" show={this.state.show} onHide={this.modalClose}>
+                        <Modal.Body>
+                            <Modal.Header closeButton>
+                                Payment 
+                            </Modal.Header>
+                            <Card.Body>
+                                <Card.Img className='rounded' src='https://bangladeshus.com/wp-content/uploads/2018/07/rocket-and-bkash-account-bd.jpg' />
+                                <Card.Title className='text-dark'>Payment with Bkash and Rocket</Card.Title>
+                                <Card.Text className='text-mute'>
+                                   Baksh Number : 01307216770 <br/>
+                                   Rocket Number : 01307216770
+                                </Card.Text>
+                            </Card.Body>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="primary" onClick={this.modalClose}>
+                                Close
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                     </Container>
                 </Fragment>
             );
