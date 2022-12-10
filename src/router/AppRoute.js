@@ -28,7 +28,7 @@ class AppRoute extends Component {
                     <Route exact path="/refand" component={RefandDesPage}/>
                     <Route exact path="/termsconditions" component={TermsDesPage}/>
                     <Route exact path="/privacypolicy" component={PrivacyDesPage}/>
-                    <Route exact path="/projectdetails/:projectId/:projectName" component={ProjectDetailsPage}/>
+                    <Route exact path="/projectdetails/:projectId" component={ProjectDetailsPage}/>
                     <Route exact path="/courseDetails/:courseId" component={CourseDetailsPage}/>
 
                 </Switch>

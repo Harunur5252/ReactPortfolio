@@ -17,7 +17,7 @@ class AllProjects extends Component {
                                     <Card.Text className="projectCardDes">
                                     <p className="text-justify">The overall skills gained from this project based courses will prepare you for any type of project development. In this course you will be taught how to write a complete project with React JS including User Panel + Admin Panel. Source code will also be provided with each class of the course, so you can easily practice manually. This project uses React JS with PHP for the server site and MySQL for the database.</p>
                                     </Card.Text>
-                                    <Button variant="primary"><Link className="linkStyle" to={"/projectdetails/1/React"}>Details</Link></Button>
+                                    <Button variant="primary"><Link className="linkStyle" to={"/projectdetails/1"}>Details</Link></Button>
                                 </Card.Body>
                             </Card>
                        </Col>

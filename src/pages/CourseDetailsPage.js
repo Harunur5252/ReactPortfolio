@@ -4,7 +4,13 @@ import Footer from "../components/Footer/Footer";
 import CourseDetails from "../components/CourseDetails/CourseDetails";
 
 class CourseDetailsPage extends Component {
-
+    constructor({match}){
+        super();
+        this.state={
+            coursePassedId:match.params.courseId,
+            coursePassedName:match.params.courseName
+        }
+    }
     componentDidMount(){
         window.scroll(0,0);
      }
@@ -14,7 +20,7 @@ class CourseDetailsPage extends Component {
         return (
             <Fragment>
                  <TopNavigation title="CourseDetails"/>
-                 <CourseDetails/>
+                 <CourseDetails id={this.state.coursePassedId}/>
                  <Footer/>
             </Fragment>
         );

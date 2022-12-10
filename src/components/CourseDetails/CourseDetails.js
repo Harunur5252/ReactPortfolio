@@ -3,9 +3,59 @@ import {Button, Col, Container, Row} from "react-bootstrap";
 import 'video-react/dist/video-react.css';
 import { Player, BigPlayButton,ControlBar, ReplayControl,ForwardControl } from 'video-react';
 import Image from '../../asset/image/banner-939233_1920.jpg'
+import axios from 'axios';
+import ReactMarkdown from 'react-markdown'
+import Loading from '../Loading/Loading';
+
 class CourseDetails extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            loading : true
+        }
+      }
+       id = +this.props.id
+
+      componentDidMount(){
+          this.fetchSingleCourseData()
+      }
+      fetchSingleCourseData = async () => {
+        try {
+            if(this.id){
+            const res = await axios.get(`http://localhost:1337/api/course?populate=*`)
+            const data = res.data?.data?.attributes
+            this.setState({
+            courses :data?.courses,
+            loading : false
+            })
+            }
+        } catch (error) {
+        console.log(error.response)
+        }
+      }
+
     render() {
+        const singleCourse = this.state?.courses?.find(course => {
+            if(this.id === course?.id){
+               return course
+            } 
+        })
         
+        if(this.state.loading){
+            return (
+             <Fragment>
+             <Container fluid className="p-0">
+                 <Container className="topContent text-center">
+                     <Row>
+                       <Col>
+                           <Loading />
+                       </Col>
+                     </Row>
+                 </Container>
+             </Container>
+           </Fragment>
+            )
+        }else{
             return (
                 <Fragment>
                     <Container fluid={true} className="topFixedPage p-0">
@@ -13,13 +63,13 @@ class CourseDetails extends Component {
                             <Container className="topPageContentCourse">
                                 <Row>
                                     <Col sm={12} md={6} lg={6} className="text-justify">
-                                        <h3 className="courseFullTitle"></h3>
-                                        <a  className="courseSubTitle">Total Lecture=20</a><br/>
-                                        <a  className="courseSubTitle">Total Student=300</a>
+                                        {/* <h3 className="courseFullTitle"></h3> */}
+                                        <a className="courseSubTitle">Total Lecture={singleCourse?.total_lecture}</a><br/>
+                                        <a  className="courseSubTitle">Total Student={singleCourse?.total_student}</a>
                                     </Col>
     
                                     <Col sm={12} md={6} lg={6} className="text-justify mt-4">
-                                        <p className="courseFullDes">About 76% web application runs on PHP.Laravel is the most powerful and popular framework of PHP. This series start from laravel basic and ends with laravel live project.The overall skills gained from this project based courses will prepare you for any type of project development.</p>
+                                        <p className="courseFullDes">{singleCourse?.about_technology}</p>
                                     </Col>
                                 </Row>
                             </Container>
@@ -30,19 +80,14 @@ class CourseDetails extends Component {
                         <Row>
                             <Col sm={12} md={6} lg={6} className="text-justify">
                               <h3 className="courseTitle">Skill You Got</h3>
-                              <ul>
-                                <li>This series covers all of basics of PHP MVC framework focusing on laravel</li>
-                                <li>This series provides you A-Z knowledge of laravel according to laravel official features</li>
-                                <li>This series covers website project & shop management project,necessary mini projects</li>
-                                <li>Series Cover Axios,which is a powerful to create ajax request inside laravel project</li>
-                             </ul>
-                              <Button href="" target="_blank" variant="primary">Buy Now</Button>
+                              <ReactMarkdown>{singleCourse?.broad_des}</ReactMarkdown>
+                              <Button target="_blank" variant="primary">Buy Now</Button>
                             </Col>
     
                             <Col sm={12} md={6} lg={6}  className="mt-4">
                                 <Player
                                         poster={Image}
-                                        startTime={300} src="http://codesilicon.com/paidvideos/Laravel/Video/1.mp4">
+                                        startTime={300} src={singleCourse?.video_link}>
                                     <BigPlayButton position="center" />
                                     <ControlBar autoHide={false}>
                                         <ReplayControl seconds={5} order={2.1} />
@@ -54,10 +99,8 @@ class CourseDetails extends Component {
                     </Container>
                 </Fragment>
             );
-
         }
-
-        
+        }
     }
 
 
