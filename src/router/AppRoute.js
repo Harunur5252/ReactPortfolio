@@ -11,12 +11,24 @@ import TermsDesPage from '../pages/TermsDesPage';
 import PrivacyDesPage from '../pages/PrivacyDesPage';
 import ProjectDetailsPage from '../pages/ProjectDetailsPage';
 import CourseDetailsPage from '../pages/CourseDetailsPage';
-
+import { ToastContainer } from 'react-toastify';
 
 class AppRoute extends Component {
     render() {
         return (
             <Fragment>
+                <ToastContainer
+                    position="bottom-center"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                    />
                  <Switch>
 
                     <Route exact path="/" component={HomePage}/>

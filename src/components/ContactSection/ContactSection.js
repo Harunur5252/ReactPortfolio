@@ -2,7 +2,85 @@ import React, {Component,Fragment} from 'react';
 import {Col, Container, Row,Form,Button} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faPhone} from "@fortawesome/free-solid-svg-icons";
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { BeatLoader } from 'react-spinners';
+
 class ContactSection extends Component {
+    state={
+        fullName : '',
+        email: '',
+        message:'',
+        fullNameError : '',
+        emailError:'',
+        messageError : '',
+        submit:false
+    }
+     
+    handleChange = (e) => {
+        this.setState({
+            ...this.state,
+            [e.target.name] : e.target.value
+        })
+        if(this.state.fullName){
+            this.setState({
+                fullNameError : ''
+            })
+        }
+        if(this.state.email){
+            this.setState({
+                emailError : ''
+            })
+        }
+        if(this.state.message){
+            this.setState({
+                messageError : ''
+            })
+        }
+    }
+    handleSubmit = async (e) => {
+        e.preventDefault()
+        if(this.state.fullName === ''){
+            this.setState({
+                fullNameError : 'fullName is required'
+            })
+        } 
+        if(this.state.email === ''){
+            this.setState({
+                emailError : 'email is required'
+            })
+        } 
+        if(this.state.message === ''){
+            this.setState({
+                messageError : 'message is required'
+            })
+        } 
+        
+        if(this.state.fullName && this.state.email && this.state.message){
+            const data = {
+                fullName : this.state.fullName,
+                email : this.state.email,
+                message : this.state.message,
+            }
+            try {
+                this.setState({
+                    submit:true
+                })
+                await axios.post('http://localhost:1337/api/contacts',{
+                   data : data
+                })
+                this.setState({
+                    fullName : '',
+                    email: '',
+                    message:'',
+                    submit:false
+                })
+                toast.success('added successfully!')
+              } catch (error) {
+                toast.error(error?.message)
+              }
+        }
+    }
 
     render() {
 
@@ -12,21 +90,24 @@ class ContactSection extends Component {
                     <Row>
                         <Col lg={6} md={6} sm={12}>
                             <h1 className="serviceMainTitle">Quick Connect</h1>
-                            <Form>
+                            <Form onSubmit={this.handleSubmit}>
                                 <Form.Group>
                                     <Form.Label className="serviceDescription">Name</Form.Label>
-                                    <Form.Control type="text" id="name" placeholder="Enter Name" />
+                                    <Form.Control name='fullName' value={this.state.fullName} onChange={this.handleChange} type="text" id="name" placeholder="Enter Name" />
+                                    <span style={{color:'red'}}>{this.state.fullNameError}</span>
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label className="serviceDescription">Email address</Form.Label>
-                                    <Form.Control type="email"  id="email" placeholder="Enter email" />
+                                    <Form.Control name='email' value={this.state.email} onChange={this.handleChange} type="email"  id="email" placeholder="Enter email" />
+                                    <span style={{color:'red'}}>{this.state.emailError}</span>
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label className="serviceDescription">Message</Form.Label>
-                                    <Form.Control as="textarea" id="msg"  rows={3} placeholder="Write Your Message" />
+                                    <Form.Control name='message' value={this.state.message} onChange={this.handleChange} as="textarea" id="msg"  rows={3} placeholder="Write Your Message" />
+                                    <span style={{color:'red'}}>{this.state.messageError}</span>
                                 </Form.Group>
-                                <Button variant="primary" type="submit">
-                                   Send
+                                <Button variant="dark" disabled={this.state.submit ? 'disabled' : null} type="submit">
+                                   {this.state.submit ? <BeatLoader color="#f70716" /> : 'Send'}
                                 </Button>
                             </Form>
                         </Col>
