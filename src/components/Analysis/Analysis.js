@@ -7,7 +7,7 @@ import Loading from '../Loading/Loading';
 class Analysis extends Component {
     state = {
         loading :true,
-      }
+    }
     
       componentDidMount(){
         this.fetchAnalysisData()
