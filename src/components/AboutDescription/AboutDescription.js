@@ -14,7 +14,7 @@ class AboutDescription extends Component {
       }
        fetchTopBannerData = async () => {
         try {
-           const res = await axios.get('http://localhost:1337/api/about')
+           const res = await axios.get('https://react-portfolio-site-one.onrender.com/api/about')
            const data = res.data?.data?.attributes
            this.setState({
               aboutMe:data?.aboutMe,
