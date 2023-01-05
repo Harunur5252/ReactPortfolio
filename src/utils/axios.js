@@ -1,6 +1,8 @@
 import axios from "axios";
-const isProduction = process.env.NODE_ENV === 'production'
+
+const isDevelopment = process.env.NODE_ENV === 'development'
 
 export const axiosInstance = axios.create({
-    baseURL: isProduction ? process.env.PRODUCTION_URL : process.env.DEVELOPMENT_URL
+    baseURL: isDevelopment ? 'http://localhost:1337/api/' : 'https://react-portfolio-site-one.onrender.com/api/'
 });
+
