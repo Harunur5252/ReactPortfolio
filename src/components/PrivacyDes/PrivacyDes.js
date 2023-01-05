@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Component,Fragment } from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import ReactMarkdown from 'react-markdown'
+import { axiosInstance } from '../../utils/axios';
 import Loading from '../Loading/Loading';
 
 class PrivacyDes extends Component {
@@ -14,7 +15,7 @@ class PrivacyDes extends Component {
       }
        fetchRefundData = async () => {
         try {
-           const res = await axios.get('http://localhost:1337/api/privacy-policy')
+           const res = await axiosInstance.get('privacy-policy')
            const data = res.data?.data?.attributes
            this.setState({
               privacyPolicy:data?.privacyPolicy,

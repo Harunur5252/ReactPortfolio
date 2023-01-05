@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {Component, Fragment} from 'react';
 import {Col,Container,Row} from "react-bootstrap";
 import  {BarChart,Bar,ResponsiveContainer,XAxis,YAxis,Tooltip} from "recharts";
+import { axiosInstance } from '../../utils/axios';
 import Loading from '../Loading/Loading';
 
 class Analysis extends Component {
@@ -14,7 +15,7 @@ class Analysis extends Component {
       }
        fetchAnalysisData = async () => {
         try {
-           const res = await axios.get('http://localhost:1337/api/technology?populate=*')
+           const res = await axiosInstance.get('technology?populate=*')
            const data = res.data?.data?.attributes
            this.setState({
               technologies : data?.technologies,

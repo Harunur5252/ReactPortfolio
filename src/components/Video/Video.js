@@ -6,6 +6,7 @@ import 'video-react/dist/video-react.css';
 import { Player, BigPlayButton,ControlBar, ReplayControl,ForwardControl } from 'video-react';
 import Loading from '../Loading/Loading';
 import axios from 'axios';
+import { axiosInstance } from '../../utils/axios';
 
 class Video extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class Video extends Component {
       }
        fetchHowIDoData = async () => {
         try {
-           const res = await axios.get('http://localhost:1337/api/how-i-do')
+           const res = await axiosInstance.get('how-i-do')
            const data = res.data?.data?.attributes
            this.setState({
               des:data?.des,

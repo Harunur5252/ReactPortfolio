@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {Component, Fragment} from 'react';
 import {Button, Card, Col, Container, Row} from "react-bootstrap";
 import { Link, NavLink } from 'react-router-dom';
+import { axiosInstance } from '../../utils/axios';
 class AllProjects extends Component {
     state = {
         loading :true,
@@ -12,7 +13,7 @@ class AllProjects extends Component {
       }
        fetchAllProjectsData = async () => {
         try {
-           const res = await axios.get('http://localhost:1337/api/recent-project?populate=*')
+           const res = await axiosInstance.get('recent-project?populate=*')
            const data = res.data?.data?.attributes
            this.setState({
               projects  : data?.projects ,

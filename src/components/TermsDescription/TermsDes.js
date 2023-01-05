@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Component,Fragment } from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import ReactMarkdown from 'react-markdown'
+import { axiosInstance } from '../../utils/axios';
 import Loading from '../Loading/Loading';
 
 class TermsDes extends Component {
@@ -14,7 +15,7 @@ class TermsDes extends Component {
       }
        fetchTermsConditionData = async () => {
         try {
-           const res = await axios.get('http://localhost:1337/api/terms-and-condition')
+           const res = await axiosInstance.get('terms-and-condition')
            const data = res.data?.data?.attributes
            this.setState({
               condition:data?.condition,

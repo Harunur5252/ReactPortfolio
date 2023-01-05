@@ -4,6 +4,7 @@ import courseImage from "../../asset/image/OIP.jpg";
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 import Loading from '../Loading/Loading';
+import { axiosInstance } from '../../utils/axios';
 class AllCourses extends Component {
     state = {
         loading :true,
@@ -14,7 +15,8 @@ class AllCourses extends Component {
       }
        fetchAllCourseData = async () => {
         try {
-           const res = await axios.get('http://localhost:1337/api/course?populate=*')
+           const res = await axiosInstance.get('course?populate=*')
+           console.log(res)
            const data = res.data?.data?.attributes
            this.setState({
               courses  : data?.courses ,

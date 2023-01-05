@@ -6,6 +6,7 @@ import CountUp from 'react-countup';
 import VisibilitySensor from "react-visibility-sensor";
 import axios from 'axios';
 import Loading from '../Loading/Loading';
+import { axiosInstance } from '../../utils/axios';
 class Summary extends Component {
     state = {
         loading :true,
@@ -16,7 +17,7 @@ class Summary extends Component {
       }
        fetchSummaryData = async () => {
         try {
-           const res = await axios.get('http://localhost:1337/api/project-and-client?populate=*')
+           const res = await axiosInstance.get('project-and-client?populate=*')
            const data = res.data?.data?.attributes
            this.setState({
               requirements : data?.requirements,

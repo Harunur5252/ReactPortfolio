@@ -3,9 +3,9 @@ import {Col, Container, Row,Modal,Button, Card} from "react-bootstrap";
 import 'video-react/dist/video-react.css';
 import { Player, BigPlayButton,ControlBar, ReplayControl,ForwardControl } from 'video-react';
 import Image from '../../asset/image/banner-939233_1920.jpg'
-import axios from 'axios';
 import ReactMarkdown from 'react-markdown'
 import Loading from '../Loading/Loading';
+import { axiosInstance } from '../../utils/axios';
 
 class CourseDetails extends Component {
     constructor(props){
@@ -29,7 +29,7 @@ class CourseDetails extends Component {
       fetchSingleCourseData = async () => {
         try {
             if(this.id){
-            const res = await axios.get(`http://localhost:1337/api/course?populate=*`)
+            const res = await axiosInstance.get(`course?populate=*`)
             const data = res.data?.data?.attributes
             this.setState({
             courses :data?.courses,

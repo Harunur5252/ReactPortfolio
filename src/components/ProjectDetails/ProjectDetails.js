@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Component,Fragment } from 'react';
 import {Col, Container, Row,Button} from "react-bootstrap";
 import {Link } from 'react-router-dom'
+import { axiosInstance } from '../../utils/axios';
 import Loading from '../Loading/Loading';
 
 class ProjectDetails extends Component {
@@ -19,7 +20,7 @@ class ProjectDetails extends Component {
       fetchSingleRecentPostData = async () => {
         try {
             if(this.id){
-            const res = await axios.get(`http://localhost:1337/api/recent-project?populate=*`)
+            const res = await axiosInstance.get(`recent-project?populate=*`)
             const data = res.data?.data?.attributes
             this.setState({
             projects :data?.projects,

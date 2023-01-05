@@ -5,6 +5,7 @@ import {faEnvelope, faPhone} from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { BeatLoader } from 'react-spinners';
+import { axiosInstance } from '../../utils/axios';
 
 class ContactSection extends Component {
     state={
@@ -66,7 +67,7 @@ class ContactSection extends Component {
                 this.setState({
                     submit:true
                 })
-                await axios.post('http://localhost:1337/api/contacts',{
+                await axiosInstance.post('contacts',{
                    data : data
                 })
                 this.setState({

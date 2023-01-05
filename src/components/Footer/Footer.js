@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../Loading/Loading';
+import { axiosInstance } from '../../utils/axios';
 
 class Footer extends Component {
     state = {
@@ -17,7 +18,7 @@ class Footer extends Component {
       }
        fetchFooterData = async () => {
         try {
-           const res = await axios.get('http://localhost:1337/api/footer')
+           const res = await axiosInstance.get('footer')
            const data = res.data?.data?.attributes
            this.setState({
               fbLink:data?.fbLink,

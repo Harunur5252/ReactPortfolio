@@ -5,6 +5,7 @@ import Loading from '../Loading/Loading';
 import graphicsLogo from '../../asset/image/graphics.svg'
 import webLogo from '../../asset/image/web.svg'
 import mobileLogo from '../../asset/image/mobile.svg'
+import { axiosInstance } from '../../utils/axios';
 
 class Services extends Component {
     state = {
@@ -16,7 +17,7 @@ class Services extends Component {
       }
        fetchServiceData = async () => {
         try {
-           const res = await axios.get('http://localhost:1337/api/service?populate=*')
+           const res = await axiosInstance.get('service?populate=*')
            const data = res.data?.data?.attributes?.services
            this.setState({
              services : data,

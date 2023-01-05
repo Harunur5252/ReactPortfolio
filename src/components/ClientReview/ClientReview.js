@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import {Col, Container, Row} from "react-bootstrap";
 import axios from 'axios';
 import Loading from '../Loading/Loading';
+import { axiosInstance } from '../../utils/axios';
 class ClientReview extends Component {
     state = {
         loading :true,
@@ -15,7 +16,7 @@ class ClientReview extends Component {
       }
        fetchTopBannerData = async () => {
         try {
-           const res = await axios.get('http://localhost:1337/api/review?populate=*')
+           const res = await axiosInstance.get('review?populate=*')
            const data = res.data?.data?.attributes
            this.setState({
               reviews :data?.reviews ,
