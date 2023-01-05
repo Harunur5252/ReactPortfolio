@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {Component, Fragment} from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import ReactMarkdown from 'react-markdown'
+import { axiosInstance } from '../../utils/axios';
 import Loading from '../Loading/Loading';
 
 class AboutDescription extends Component {
@@ -14,7 +15,7 @@ class AboutDescription extends Component {
       }
        fetchTopBannerData = async () => {
         try {
-           const res = await axios.get('https://react-portfolio-site-one.onrender.com/api/about')
+           const res = await axiosInstance.get('about')
            const data = res.data?.data?.attributes
            this.setState({
               aboutMe:data?.aboutMe,
