@@ -8,7 +8,7 @@ import Loading from '../Loading/Loading';
 class AboutDescription extends Component {
     state = {
         loading :true,
-      }
+    }
     
       componentDidMount(){
         this.fetchTopBannerData()

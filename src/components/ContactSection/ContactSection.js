@@ -79,6 +79,9 @@ class ContactSection extends Component {
                 toast.success('added successfully!')
               } catch (error) {
                 toast.error(error?.message)
+                this.setState({
+                    submit:false
+                })
               }
         }
     }
