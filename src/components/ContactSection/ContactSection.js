@@ -110,7 +110,7 @@ class ContactSection extends Component {
                                     <Form.Control name='message' value={this.state.message} onChange={this.handleChange} as="textarea" id="msg"  rows={3} placeholder="Write Your Message" />
                                     <span style={{color:'red'}}>{this.state.messageError}</span>
                                 </Form.Group>
-                                <Button variant="dark" disabled={this.state.submit ? 'disabled' : null} type="submit">
+                                <Button variant="dark" style={{width:'100%'}} disabled={this.state.submit ? 'disabled' : null} type="submit">
                                    {this.state.submit ? <BeatLoader color="#f70716" /> : 'Send'}
                                 </Button>
                             </Form>
