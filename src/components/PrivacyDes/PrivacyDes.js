@@ -2,32 +2,17 @@ import axios from 'axios';
 import React, { Component,Fragment } from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import ReactMarkdown from 'react-markdown'
+import { Context } from '../../context/Context';
 import { axiosInstance } from '../../utils/axios';
 import Loading from '../Loading/Loading';
 
 class PrivacyDes extends Component {
-    state = {
-        loading :true,
-      }
-    
-      componentDidMount(){
-        this.fetchRefundData()
-      }
-       fetchRefundData = async () => {
-        try {
-           const res = await axiosInstance.get('privacy-policy')
-           const data = res.data?.data?.attributes
-           this.setState({
-              privacyPolicy:data?.privacyPolicy,
-              loading : false
-           })
-        } catch (error) {
-          console.log(error.response)
-        }
-       }
+static contextType = Context
+
 
     render() {
-        if(this.state.loading){
+        const {privacyData} = this.context
+        if(privacyData.loading){
             return (
              <Fragment>
              <Container fluid className="p-0">
@@ -49,7 +34,7 @@ class PrivacyDes extends Component {
                             <Col sm={12} md={12} lg={12}> 
                                 <p className="serviceDescription text-justify">
                                 <ReactMarkdown>
-                                    {this.state?.privacyPolicy}
+                                    {privacyData?.privacyData?.privacyPolicy}
                                 </ReactMarkdown>
                                 </p>
                             </Col>

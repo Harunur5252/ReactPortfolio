@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { BeatLoader } from "react-spinners";
 import { axiosInstance } from "../../utils/axios";
+import { Context } from "../../context/Context";
 
 class ContactSection extends Component {
   state = {
@@ -17,6 +18,7 @@ class ContactSection extends Component {
     messageError: "",
     submit: false,
   };
+  static contextType = Context
 
   handleChange = (e) => {
     this.setState({
@@ -44,6 +46,11 @@ class ContactSection extends Component {
     if (this.state.fullName === "") {
       this.setState({
         fullNameError: "fullName is required",
+      });
+    }
+    if(this.state.fullName){
+      this.setState({
+        fullNameError: "",
       });
     }
     if (this.state.email === "") {
@@ -87,6 +94,7 @@ class ContactSection extends Component {
   };
 
   render() {
+    const {footerData} = this.context
     return (
       <Fragment>
         <Container>
@@ -153,13 +161,13 @@ class ContactSection extends Component {
             <Col lg={6} md={6} sm={12}>
               <h1 className="serviceMainTitle">Discuss Now</h1>
               <p className="carouselDes">
-                #79/6 Bhimgonj Aria, 3rd Floor Front Side, Sherpur
+                {footerData?.footerData?.address}
               </p>
               <p className="carouselDes">
-                <FontAwesomeIcon icon={faEnvelope} /> hroshid695@gmail.com
+                <FontAwesomeIcon icon={faEnvelope} />{footerData?.footerData?.email}
               </p>
               <p className="carouselDes">
-                <FontAwesomeIcon icon={faPhone} /> 01307216770
+                <FontAwesomeIcon icon={faPhone} /> {footerData?.footerData?.phone}
               </p>
             </Col>
           </Row>

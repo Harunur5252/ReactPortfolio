@@ -1,66 +1,46 @@
-import axios from 'axios';
-import React, { Component,Fragment } from 'react';
-import {Col, Container, Row} from "react-bootstrap";
-import ReactMarkdown from 'react-markdown'
-import { axiosInstance } from '../../utils/axios';
-import Loading from '../Loading/Loading';
+import axios from "axios";
+import React, { Component, Fragment } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import ReactMarkdown from "react-markdown";
+import { Context } from "../../context/Context";
+import { axiosInstance } from "../../utils/axios";
+import Loading from "../Loading/Loading";
 
 class TermsDes extends Component {
-    state = {
-        loading :true,
-      }
-    
-      componentDidMount(){
-        this.fetchTermsConditionData()
-      }
-       fetchTermsConditionData = async () => {
-        try {
-           const res = await axiosInstance.get('terms-and-condition')
-           const data = res.data?.data?.attributes
-           this.setState({
-              condition:data?.condition,
-              loading : false
-           })
-        } catch (error) {
-          console.log(error.response)
-        }
-       }
+  static contextType = Context;
 
-    render() {
-        if(this.state.loading){
-            return (
-             <Fragment>
-             <Container fluid className="p-0">
-                 <Container className="topContent text-center">
-                     <Row>
-                       <Col>
-                           <Loading />
-                       </Col>
-                     </Row>
-                 </Container>
-             </Container>
-           </Fragment>
-            )
-        }else{
-            return (
-                <Fragment>
-                     <Container className="mt-5">
-                        <Row>
-                           <Col sm={12} md={12} lg={12}>
-                           <p className="serviceDescription text-justify">
-                              <ReactMarkdown>
-                                  {this.state?.condition}
-                              </ReactMarkdown>
-                           </p>
-                               
-                           </Col>
-                        </Row>
-                    </Container>
-                </Fragment>
-               );
-        }
-           
+  render() {
+    const {termsData} = this.context
+    if (termsData?.loading) {
+      return (
+        <Fragment>
+          <Container fluid className="p-0">
+            <Container className="topContent text-center">
+              <Row>
+                <Col>
+                  <Loading />
+                </Col>
+              </Row>
+            </Container>
+          </Container>
+        </Fragment>
+      );
+    } else {
+      return (
+        <Fragment>
+          <Container className="mt-5">
+            <Row>
+              <Col sm={12} md={12} lg={12}>
+                <p className="serviceDescription text-justify">
+                  <ReactMarkdown>{termsData?.termsData?.condition}</ReactMarkdown>
+                </p>
+              </Col>
+            </Row>
+          </Container>
+        </Fragment>
+      );
     }
+  }
 }
 
 export default TermsDes;
