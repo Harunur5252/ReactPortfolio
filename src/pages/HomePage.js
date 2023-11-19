@@ -1,4 +1,4 @@
-import React, {Component,Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import TopNavigation from "../components/TopNavigation/TopNavigation";
 import Services from "../components/Services/Services";
 import Analysis from "../components/Analysis/Analysis";
@@ -13,22 +13,22 @@ import TopBanner from "../components/TopBanner/TopBanner";
 
 class HomePage extends Component {
 
-    componentDidMount(){
-        window.scroll(0,0);
+    componentDidMount() {
+        window.scroll(0, 0);
     }
     render() {
         return (
             <Fragment>
-                <TopNavigation title="Home"/>
-                <TopBanner/>
-                <Services/>
-                <Analysis/>
-                <Summary/>
-                <RecentProject/>
-                <Course/>
-                <Video/>
-                <ClientReview/>
-                <Footer/>
+                <TopNavigation title="Home" />
+                <TopBanner />
+                <Services />
+                <Analysis />
+                <Summary />
+                <RecentProject />
+                <Course />
+                <Video />
+                <ClientReview />
+                <Footer />
             </Fragment>
         );
     }

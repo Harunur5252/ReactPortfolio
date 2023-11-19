@@ -1,5 +1,5 @@
 import React, { Component, Fragment, lazy, Suspense } from 'react';
-import {Switch,Route} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import LazyLoading from '../components/LazyLoading/LazyLoading';
 
@@ -41,24 +41,24 @@ class AppRoute extends Component {
                     draggable
                     pauseOnHover
                     theme="light"
-                    />
-                    <Suspense fallback={<LazyLoading />}>
-                        <Switch>
+                />
+                <Suspense fallback={<LazyLoading />}>
+                    <Switch>
 
-                        <Route exact path="/" component={HomePage}/>
-                        <Route exact path="/services" component={ServicePage}/>
-                        <Route exact path="/courses" component={CoursePage}/>
-                        <Route exact path="/portfolio" component={PortfolioPage}/>
-                        <Route exact path="/contact" component={ContactPage}/>
-                        <Route exact path="/about" component={AboutPage}/>
-                        <Route exact path="/refand" component={RefandDesPage}/>
-                        <Route exact path="/termsconditions" component={TermsDesPage}/>
-                        <Route exact path="/privacypolicy" component={PrivacyDesPage}/>
-                        <Route exact path="/projectdetails/:projectId" component={ProjectDetailsPage}/>
-                        <Route exact path="/courseDetails/:courseId" component={CourseDetailsPage}/>
+                        <Route exact path="/" component={HomePage} />
+                        <Route exact path="/services" component={ServicePage} />
+                        <Route exact path="/courses" component={CoursePage} />
+                        <Route exact path="/portfolio" component={PortfolioPage} />
+                        <Route exact path="/contact" component={ContactPage} />
+                        <Route exact path="/about" component={AboutPage} />
+                        <Route exact path="/refand" component={RefandDesPage} />
+                        <Route exact path="/termsconditions" component={TermsDesPage} />
+                        <Route exact path="/privacypolicy" component={PrivacyDesPage} />
+                        <Route exact path="/projectdetails/:projectId" component={ProjectDetailsPage} />
+                        <Route exact path="/courseDetails/:courseId" component={CourseDetailsPage} />
 
-                        </Switch>
-                    </Suspense>
+                    </Switch>
+                </Suspense>
             </Fragment>
         );
     }

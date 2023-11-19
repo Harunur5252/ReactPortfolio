@@ -6,6 +6,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### project description
 This is a portfolio design project
 
+### Technologies used
+1. Html
+2. Css
+3. React Bootstrap
+4. JavaScript
+5. React js
+6. Strapi Cms(for backend)
+
+
 ## Project Picture Samples
 
 ### header section
